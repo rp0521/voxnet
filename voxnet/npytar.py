@@ -11,13 +11,13 @@ SUFFIX = '.npy.z'
 
 class NpyTarWriter(object):
     def __init__(self, fname):
-        self.tfile = tarfile.open(fname, 'w|')
+        self.tfile = tarfile.open(fname, 'w|')#w| mean what ?
 
     def add(self, arr, name):
 
-        sio = StringIO.StringIO()
+        sio = StringIO.StringIO()  #write
         np.save(sio, arr)
-        zbuf = zlib.compress(sio.getvalue())
+        zbuf = zlib.compress(sio.getvalue()) # compress
         sio.close()
 
         zsio = StringIO.StringIO(zbuf)
